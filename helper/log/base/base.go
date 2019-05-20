@@ -1,5 +1,7 @@
 package base
 
+import "gopcp.v2/helper/log/field"
+
 type Option interface {
     Name() string
 }
@@ -33,4 +35,6 @@ type MyLogger interface {
     Warn(v ...interface{})
     Warnf(format string, v ...interface{})
     Warnln(v ...interface{})
+    
+    WithFields(fields ...field.Field) MyLogger
 }
