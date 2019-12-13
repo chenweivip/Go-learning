@@ -45,7 +45,7 @@ func (p *Pool) Release(r io.Closer) {
     defer p.m.Unlock()
 
     if p.closed{
-        r.Close()
+        _ = r.Close()
         return
     }
     select {
@@ -53,7 +53,7 @@ func (p *Pool) Release(r io.Closer) {
         log.Println("Release:", "In Queue")
     default:
         log.Println("Release:", "Closing")
-        r.Close()
+        _ = r.Close()
     }
 }
 
@@ -68,6 +68,6 @@ func (p *Pool) Close() {
     close(p.resources)
 
     for r := range p.resources{
-        r.Close()
+        _ = r.Close()
     }
 }
