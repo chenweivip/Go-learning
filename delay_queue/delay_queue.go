@@ -167,7 +167,7 @@ func main() {
 	dm.AddTask(time.Now().Add(time.Second*20), "test3", func(args ...interface{}) {
 		fmt.Println(args...)
 	}, []interface{}{"hello", "world", "test"})
-	dm.AddTask(time.Now().Add(time.Second*30), "test4", func(args ...interface{}) {
+	dm.AddTask(time.Now().Add(time.Second*c), "test4", func(args ...interface{}) {
 		sum := 0
 		for arg := range args {
 			sum += arg
